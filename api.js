@@ -29,10 +29,15 @@ function getProductById(req, res) {
 }
 
 function updateProductById(req, res) {
-    var payload = req.body
+    var payload = req.body;
     var pid = req.params.pid;    
     // #7 Update a product by ID (findByIdAndUpdate)
-
+        Product.findByIdAndUpdate(pid,payload,function(err){
+        if(err) {
+            res.status(500).json({ status: "error", message: err});
+        }     
+        res.json({status:"Update a product"})
+    })
     // ===============================
 }
 
