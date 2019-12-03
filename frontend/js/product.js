@@ -55,7 +55,16 @@ $(function () {
 
         // #13 Add new products by calling api
         // use $.post
-
+        app.post('/api/products', function (req, res) {
+            //insert data to mongooes
+            var newproduct = req.body;
+            var product = new Product(newproduct);
+            product.save(function(err){
+                if(err) res.status(500).json(err);
+                res.json({status: "Added a product"});
+            });
+        
+        });
         // ===============================
 
     });
