@@ -48,7 +48,14 @@ function updateProductById(req, res) {
 function deleteProductById(req, res) {
     var pid = req.params.pid;    
     // #8 Delete a product by ID (findByIdAndDelete)
-
+    app.delete('/api/products/:id', function (req, res) {
+        var id = req.params.id;
+        Product.findByIdAndRemove(id,function(err){
+            if(err) res.status(500).json(err);
+            res.json({status:"Delete a product"})
+        })
+    
+    });
     // ===============================
 }
 
