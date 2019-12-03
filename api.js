@@ -19,13 +19,12 @@ function getAllProducts(req, res) {
 function getProductById(req, res) {
     var pid = req.params.pid;    
     // #6 Get a product by ID
-    app.get('/api/products/:id', function (req, res) {
-        var id = req.params.id;
-        Product.find({"_id":id},function(err,products){
-            if(err) res.status(500).json(err);
-            res.json(products);
-        })
-    });
+    Product.find({"_id":pid},function(err,products){
+        if(err) {
+            res.status(500).json({ status: "error", message: err});
+        }     
+        res.json(products);
+    })
     // ===============================
 }
 
@@ -33,29 +32,14 @@ function updateProductById(req, res) {
     var payload = req.body
     var pid = req.params.pid;    
     // #7 Update a product by ID (findByIdAndUpdate)
-    app.put('/api/products/:id', function (req, res) {
-        var id = req.params.id;
-        var updateproduct = req.body;
-        Product.findByIdAndUpdate(id,updateproduct,function(err){
-            if(err) res.status(500).json(err);
-            res.json({status:"Update a product"})
-        })
-    
-    });
+
     // ===============================
 }
 
 function deleteProductById(req, res) {
     var pid = req.params.pid;    
     // #8 Delete a product by ID (findByIdAndDelete)
-    app.delete('/api/products/:id', function (req, res) {
-        var id = req.params.id;
-        Product.findByIdAndRemove(id,function(err){
-            if(err) res.status(500).json(err);
-            res.json({status:"Delete a product"})
-        })
-    
-    });
+
     // ===============================
 }
 
