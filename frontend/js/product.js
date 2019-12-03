@@ -60,7 +60,7 @@ $(function () {
         $.post(url, {newproduct:txt},function(result){
         $("span").html(result);
         
-    });}
+    });});
         // ===============================
 
     });
