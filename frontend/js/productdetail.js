@@ -10,7 +10,17 @@ $(function () {
     function getData() {
         // #14 Get a selected product and display as a form
         // use $.get
-
+        $.get(endpoint,function(data,status){
+            console.log(status);
+            console.log(data);
+    
+            $("#serialno").val(data.serialno);
+            $("#name").val(data.name);
+            $("#category").val(data.category);
+            $("#price").val(data.price);
+            $("#photo").val(data.photo);
+            
+        });
         // ===============================
     }
 
