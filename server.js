@@ -33,7 +33,35 @@ router.get('/products', products.getAllProducts);
 router.get('/products/:pid', products.getProductById);
 
 // #4 Complete the routing for POST, PUT, DELETE
+app.post('/api/product', function (req, res) {
+    //insert data to mongooes
+    var newproduct = req.body;
+    var product = new Product(newproduct);
+    product.save(function(err){
+        if(err) res.status(500).json(err);
+        res.json({status: "Added a product"});
+    });
 
+});
+
+app.put('/api/product/:id', function (req, res) {
+    var id = req.params.id;
+    var updateproduct = req.body;
+    Product.findByIdAndUpdate(id,updateproduct,function(err){
+        if(err) res.status(500).json(err);
+        res.json({status:"Update a product"})
+    })
+
+});
+
+app.delete('/api/product/:id', function (req, res) {
+    var id = req.params.id;
+    Product.findByIdAndRemove(id,function(err){
+        if(err) res.status(500).json(err);
+        res.json({status:"Delete a product"})
+    })
+
+});
 // ===============================
 
 
@@ -42,6 +70,7 @@ router.get('/products/:pid', products.getProductById);
 app.use('/api', cors(), router);
 
 // #10 Start the server
-
+app.listen(port, function () {
 // ===============================
 console.log('Magic happens on http://localhost:' + port);
+});
