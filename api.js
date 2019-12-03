@@ -19,7 +19,13 @@ function getAllProducts(req, res) {
 function getProductById(req, res) {
     var pid = req.params.pid;    
     // #6 Get a product by ID
-    
+    app.get('/api/products/:id', function (req, res) {
+        var id = req.params.id;
+        Product.find({"_id":id},function(err,products){
+            if(err) res.status(500).json(err);
+            res.json(products);
+        })
+    });
     // ===============================
 }
 
