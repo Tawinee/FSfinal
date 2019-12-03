@@ -9,7 +9,32 @@ $(function () {
         $("#plist").empty();
         // #12 Get all products and display as a table
         // use $.get
-        
+        $.get(endpoin, function (data, status) {
+            console.log(status);
+            console.log(data);
+    
+            if (status = 'success') {
+                for (index in data) {
+                    var user = data[index];
+                    var row = `<tr>
+                        <td scope="row">${user.serialno}</td>
+                        <td>${user.name}</td>
+                        <td>${user.category}</td>
+                        <td>${user.price}</td>
+                        <td>${user.photo}</td>
+                        <td>
+                        <a class="btn btn-primary" href="userdetail.html?id=${user.id}">
+                             View Detail
+                    </a>
+                    </td>
+                    </tr>`;
+    
+                    $("#userlist").append(row);
+                }
+    
+            }
+    
+        });
         // ===============================
     }
     
