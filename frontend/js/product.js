@@ -59,8 +59,8 @@ $(function () {
             var txt = $("input").val();
         $.post("demo_ajax_gethint.asp", {data:txt},function(result){
         $("span").html(result);
-        }
-    });
+        
+    });}
         // ===============================
 
     });
