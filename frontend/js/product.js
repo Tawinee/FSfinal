@@ -15,15 +15,15 @@ $(function () {
     
             if (status = 'success') {
                 for (index in data) {
-                    var user = data[index];
+                    var product = data[index];
                     var row = `<tr>
-                        <td scope="row">${user.serialno}</td>
-                        <td>${user.name}</td>
-                        <td>${user.category}</td>
-                        <td>${user.price}</td>
-                        <td>${user.photo}</td>
+                        <td scope="row">${product.serialno}</td>
+                        <td>${product.name}</td>
+                        <td>${product.category}</td>
+                        <td>${product.price}</td>
+                        <td>${product.photo}</td>
                         <td>
-                        <a class="btn btn-primary" href="userdetail.html?id=${user.serialno}">
+                        <a class="btn btn-primary" href="productdetail.html?id=${product.serialno}">
                              View Detail
                     </a>
                     </td>
