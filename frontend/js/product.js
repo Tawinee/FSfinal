@@ -9,7 +9,7 @@ $(function () {
         $("#plist").empty();
         // #12 Get all products and display as a table
         // use $.get
-
+        
         // ===============================
     }
     
